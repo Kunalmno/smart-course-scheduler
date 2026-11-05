@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* dark: variants follow the .dark class the theme switcher sets on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens
+ * Neutral ramp is graphite, tinted only a hair toward warm paper.
+ * Three text roles, one accent (teal), hairlines at 8% of the text color.
+ */
+:root {
+  --fg: #171717;
+  --fg-2: #525252;
+  --fg-3: #6b6b70;
+  --page: #fafafa;
+  --surface: #ffffff;
+  --raised: #f4f4f5;
+  --deep: #f4f4f5;
+  --accent: #0f766e;
+  --ok: #16a34a;
+  --bad: #dc2626;
+  --warn: #b45309;
+  color-scheme: light;
+}
+
+html.dark {
+  --fg: #ededed;
+  --fg-2: #a1a1a6;
+  --fg-3: #85858b;
+  --page: #141415;
+  --surface: #19191b;
+  --raised: #232325;
+  --deep: #0f0f10;
+  --accent: #2dd4bf;
+  --ok: #4cc38a;
+  --bad: #e5484d;
+  --warn: #e0a43a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-fg-3: var(--fg-3);
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-deep: var(--deep);
+  --color-line: color-mix(in srgb, var(--fg) 8%, transparent);
+  --color-line-strong: color-mix(in srgb, var(--fg) 16%, transparent);
+  --color-accent: var(--accent);
+  --color-ok: var(--ok);
+  --color-bad: var(--bad);
+  --color-warn: var(--warn);
+
+  --shadow-float: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* one easing curve, short durations */
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-duration: 150ms;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--page);
+    color: var(--fg);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* One entrance: a short fade and a small rise */
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-enter {
+  animation: enter 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--fg) 24%, transparent);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--fg) 40%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Graphite ramp: any leftover slate utility stays neutral, never blue-grey */
+@theme {
+  --color-slate-50: #fafafa;
+  --color-slate-100: #f4f4f5;
+  --color-slate-200: #e7e7ea;
+  --color-slate-300: #d4d4d8;
+  --color-slate-400: #a1a1a6;
+  --color-slate-500: #85858b;
+  --color-slate-600: #525252;
+  --color-slate-700: #2e2e31;
+  --color-slate-800: #232325;
+  --color-slate-900: #19191b;
+  --color-slate-950: #0f0f10;
+}
