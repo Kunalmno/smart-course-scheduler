@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { parseISO } from 'date-fns';
 import { ScheduleEvent } from '../types';
 import { intervalsOverlap } from './conflicts';

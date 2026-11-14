@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { describe, it, expect } from 'vitest';
 import { scoreMatch, highlightMatch, searchAcademicEntities } from './search';
 import { mockCourses, mockRooms, mockFaculty, mockScholars, mockEvents } from '../data';

@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { addMinutes, parseISO, formatISO, isBefore, isAfter, isEqual } from 'date-fns';
 import {
   Conflict,

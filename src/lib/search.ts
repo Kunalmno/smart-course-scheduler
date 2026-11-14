@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { Course, Room, Faculty, Scholar, ScheduleEvent } from '../types';
 
 export type SearchCategory =

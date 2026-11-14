@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { Conflict, Course, Faculty, Room, ScheduleEvent } from '../types';
 
 export interface ConflictLookups {
